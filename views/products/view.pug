@@ -1,0 +1,30 @@
+extends ../layouts/common.pug
+
+block content
+    h1 Products
+    
+    div.d-flex 
+        form.ml-auto(action="/products/search", method="GET")
+            input.mr-2(type="text", name="q", autofocus)
+            button.btn.btn-primary Search
+
+    .d-flex.flex-wrap.justify-content-between
+        each product in products
+            .card(style="width: 24%").mb-3
+                img.card-img-top(src= product.image)
+                .card-body
+                    h5.card-title= product.name
+                    p.card-text= product.description
+                    a.btn.btn-primary(href="#") Add to cart
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>
+
+
