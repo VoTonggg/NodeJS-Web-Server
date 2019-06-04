@@ -2,18 +2,6 @@
   "users": [
     {
       "name": "Duyen",
-      "id": "JveQ9J5gS"
-    },
-    {
-      "name": "Linh",
-      "id": "AmG9Iem3g"
-    },
-    {
-      "name": "Duyen",
-      "id": "s8QgWCTqj"
-    },
-    {
-      "name": "Duyen",
       "phone": "0123456789",
       "id": "aFe9jjfue"
     },
@@ -28,6 +16,12 @@
       "name": "Vo Tong",
       "phone": "987654",
       "id": "exv09w6fS"
+    },
+    {
+      "name": "Stefan",
+      "phone": "123456789",
+      "id": "CMSs0NmMO",
+      "avatar": "uploads/e906657d70fbfdfea6998503c1cd2639"
     }
   ],
   "products": [
