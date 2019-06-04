@@ -625,5 +625,18 @@
       "image": "https://loremflickr.com/320/240",
       "description": "sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus"
     }
+  ],
+  "sessions": [
+    {
+      "id": "wdjcpa7wc"
+    },
+    {
+      "id": "ckkkvpwc6",
+      "cart": {
+        "d09d87d2-fd58-41c2-be58-e25dfdffa509": 2,
+        "9a7756c3-39d0-42e3-a8a4-a76cc1384f76": 2,
+        "71af8c4b-6ccf-424e-b81d-2ee0a817952f": 1
+      }
+    }
   ]
 }

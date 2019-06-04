@@ -7,7 +7,9 @@ var cookieParser = require('cookie-parser')
 var userRoute = require("./routes/user.route");
 var authRoute = require("./routes/auth.route");
 var productsRoute = require("./routes/products.route");
+var cartRoute = require("./routes/cart.route");
 var authMiddleware = require("./middlewares/auth.middleware");
+var sessionMiddleware = require("./middlewares/session.middleware");
 
 
 var app = express();
@@ -19,6 +21,7 @@ app.set("views", "./views");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));	
 app.use(cookieParser(process.env.SESSION_SECRET));
+app.use(sessionMiddleware);
 
 app.use(express.static("public"));
 
@@ -31,6 +34,7 @@ app.get("/", function(req, res) {
 app.use("/users", authMiddleware.requireAuth, userRoute);
 app.use("/auth", authRoute);
 app.use("/products", productsRoute);
+app.use("/cart", cartRoute);
 
 app.listen(port, function() {
 	 console.log("Server is listening on port " + port);
