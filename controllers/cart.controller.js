@@ -1,4 +1,4 @@
-var db = require("../db");
+var Session = require("../models/session.model");
 
 module.exports.addToCart = function(req, res, next) {
 	var productId = req.params.productId;
@@ -8,14 +8,28 @@ module.exports.addToCart = function(req, res, next) {
 		res.redirect("/products");
 		return;
 	}
-	var count = db.get("sessions")
-		.find({id: sessionId})
-		.get("cart." + productId, 0)
-		.value();
 
-	db.get("sessions")
-		.find({id: sessionId})
-		.set("cart." + productId, count + 1)
-		.write()
+	Session.findOne({sessionId: sessionId}, (err, sessionFound) => {
+		if(err) console.log(err)
+		else {
+			if(!sessionFound.cart) {
+				sessionFound.cart = {};
+				sessionFound.set("cart." + productId, 1);
+			}
+			else if(!sessionFound.cart[productId]) {
+				sessionFound.set("cart." + productId, 1);
+			}
+			else {
+				var count = sessionFound.cart[productId];
+				count = count + 1;
+				sessionFound.set("cart." + productId, count);
+			}
+			sessionFound.save((err, saved) => {
+				if(err) console.log(err)
+				else console.log("updated!");
+			});
+		}
+	})
+
 	res.redirect("/products");
 };
