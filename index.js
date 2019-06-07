@@ -14,6 +14,8 @@ var cartRoute = require("./routes/cart.route");
 var authMiddleware = require("./middlewares/auth.middleware");
 var sessionMiddleware = require("./middlewares/session.middleware");
 
+var apiProductApi = require("./api/routes/product.route");
+
 
 var app = express();
 
@@ -38,6 +40,7 @@ app.use("/users", authMiddleware.requireAuth, userRoute);
 app.use("/auth", authRoute);
 app.use("/products", productRoute);
 app.use("/cart", cartRoute);
+app.use("/api/products", apiProductApi );
 
 app.listen(port, function() {
 	 console.log("Server is listening on port " + port);
